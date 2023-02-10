@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Course } from './entities/course.entity';
 import { LocalErros } from 'src/helpers/error.helper';
-import { CreateCourseDto } from './dto/create-course.dto';
 
 @Injectable()
 export class CousersService {
