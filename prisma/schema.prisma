@@ -9,3 +9,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuarios {
+  CodUso    Int     @id @default(autoincrement())
+  Email     String  @unique
+  Nome      String
+  SobreNome String
+  Post      Posts[]
+
+  CreatedAt DateTime  @default(now())
+  UpdatedAt DateTime? @updatedAt
+}
+
+model Posts {
+  CodPost Int    @id @default(autoincrement())
+  Post    String
+
+  CreatedAt DateTime  @default(now())
+  UpdatedAt DateTime? @updatedAt
+  Usuarios  Usuarios? @relation(fields: [CodUso], references: [CodUso])
+  CodUso    Int?
+}
